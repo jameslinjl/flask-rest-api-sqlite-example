@@ -118,7 +118,7 @@ def handle_file_with_id(file_id):
 @app.route('/file/<int:file_id>/<file_name>')
 def file_server_route(file_id, file_name):
 	result = db.db_select(
-		'SELECT file_content_b64 FROM file WHERE id = ? AND file_name = ?',
+		'SELECT file_content_b64 FROM file WHERE id = ? AND file_name = ? AND deleted = 0',
 		(file_id, file_name),
 		True
 	)
